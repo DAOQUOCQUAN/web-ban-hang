@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RicRice - Cửa hàng gạo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-green-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">RicRice</h1>
+      <nav class="space-x-4">
+        <a href="#" class="hover:underline">Trang chủ</a>
+        <a href="#products" class="hover:underline">Sản phẩm</a>
+        <button onclick="toggleCart()" class="bg-white text-green-600 font-semibold px-3 py-1 rounded hover:bg-gray-100">
+          🛒 Giỏ hàng (<span id="cart-count">0</span>)
+        </button>
+      </nav>
+      <!-- Tìm kiếm (liên kết tới search.html) -->
+      <div class="flex space-x-4 items-center">
+        <a href="search.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Tìm kiếm sản phẩm</a>
+      </div>
+      <div>
+        <a href="login.html" class="text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700">Đăng nhập</a>
+        <a href="register.html" class="ml-4 text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">Đăng ký</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nội dung chính -->
+  <main class="flex justify-center items-center h-full">
+    <div class="max-w-screen-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Chào mừng đến với RicRice!</h2>
+      <p class="text-gray-600">Cửa hàng chuyên cung cấp các loại gạo chất lượng. Bạn có thể đăng nhập để quản lý đơn hàng của mình.</p>
+    </div>
+  </main>
+
+  <!-- Banner -->
+  <section class="bg-cover bg-center h-64 flex items-center justify-center text-white text-3xl font-bold"
+    style="background-image: url('https://images.unsplash.com/photo-1521747116042-5a810fda9664');">
+    Gạo ngon từ thiên nhiên
+  </section>
+
+  <!-- Danh sách sản phẩm -->
+  <section id="products" class="py-10 container mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-center">Sản phẩm gạo nổi bật</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+    <!-- Gạo ST25 -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="st25.html">
+        <img src="./img/st25.jpg" alt="Gạo ST25" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo ST25</h3>
+      <p class="text-green-600 font-bold">35,000đ / kg</p>
+      <button onclick="addToCart('Gạo ST25', 35000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    <!-- Gạo Japonica -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="japonica.html">
+        <img src="./img/Gạo Japonica.jpg" alt="Gạo Japonica" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo Japonica</h3>
+      <p class="text-green-600 font-bold">40,000đ / kg</p>
+      <button onclick="addToCart('Gạo Japonica', 40000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    <!-- Gạo Lứt -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="Lut.html">
+        <img src="./img/gạo lứt.jpg" alt="Gạo Lứt" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo Lứt</h3>
+      <p class="text-green-600 font-bold">40,000đ / kg</p>
+      <button onclick="addToCart('Gạo Lứt', 40000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    <!-- Gạo Nếp Cẩm -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="nep_cam.html">
+        <img src="./img/nepcam.jpg" alt="Gạo Nếp Cẩm" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo Nếp Cẩm</h3>
+      <p class="text-green-600 font-bold">45,000đ / kg</p>
+      <button onclick="addToCart('Gạo Nếp Cẩm', 45000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    <!-- Gạo Tám Thơm -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="tam_thom.html">
+        <img src="./img/tamthom.jpg" alt="Gạo Tám Thơm" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo Tám Thơm</h3>
+      <p class="text-green-600 font-bold">38,000đ / kg</p>
+      <button onclick="addToCart('Gạo Tám Thơm', 38000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    <!-- Gạo Hương Lài -->
+    <div class="bg-white shadow-lg rounded-lg p-4">
+      <a href="huong_lai.html">
+        <img src="./img/huonglai.jpg" alt="Gạo Hương Lài" class="w-full h-48 object-cover rounded">
+      </a>
+      <h3 class="text-xl font-semibold mt-2">Gạo Hương Lài</h3>
+      <p class="text-green-600 font-bold">50,000đ / kg</p>
+      <button onclick="addToCart('Gạo Hương Lài', 50000)" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Thêm vào giỏ
+      </button>
+    </div>
+
+    </div>
+  </section>
+
+<!-- Giỏ hàng -->
+<section id="cart" class="hidden container mx-auto my-10 bg-white shadow-lg p-6 rounded-lg">
+    <h2 class="text-xl font-bold mb-4">Giỏ hàng của bạn</h2>
+    <div id="cart-items" class="space-y-4"></div>
+    <div class="mt-4 text-right font-bold text-lg">
+        Tổng: <span id="cart-total">0</span>đ
+    </div>
+
+    <!-- Cách thức mua hàng -->
+    <div class="mt-6">
+        <h3 class="text-lg font-semibold text-gray-800">Chọn cách thức mua hàng:</h3>
+        <div class="mt-4 space-y-2">
+            <label class="block">
+                <input type="radio" name="payment" value="cash" class="mr-2"> Thanh toán khi nhận hàng (COD)
+            </label>
+            <label class="block">
+                <input type="radio" name="payment" value="card" class="mr-2"> Thanh toán qua thẻ ngân hàng
+            </label>
+            <label class="block">
+                <input type="radio" name="payment" value="paypal" class="mr-2"> Thanh toán qua PayPal
+            </label>
+        </div>
+    </div>
+
+    <div class="mt-6 text-right">
+        <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+            Thanh toán
+        </button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-green-600 text-white text-center p-4 mt-10">
+    &copy; 2025 RicRice. All rights reserved.
+</footer>
+
+<!-- JavaScript giỏ hàng -->
+<script>
+    let cart = [];
+
+    function addToCart(name, price) {
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ name, price, qty: 1 });
+        }
+        updateCartUI();
+    }
+
+    function removeFromCart(name) {
+        cart = cart.filter(item => item.name !== name);
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        document.getElementById('cart-count').innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const line = document.createElement('div');
+            line.className = 'flex justify-between items-center border-b pb-2';
+            line.innerHTML = ` 
+                <span>${item.name} x${item.qty}</span>
+                <span>${(item.price * item.qty).toLocaleString()}đ</span>
+                <button onclick="removeFromCart('${item.name}')" class="text-red-600 hover:underline">Xóa</button>
+            `;
+            total += item.price * item.qty;
+            cartItems.appendChild(line);
+        });
+
+        document.getElementById('cart-total').innerText = total.toLocaleString();
+    }
+
+    function toggleCart() {
+        document.getElementById('cart').classList.toggle('hidden');
+    }
+</script>
+<script>
+    // Load sản phẩm từ LocalStorage khi trang được tải
+    window.onload = function() {
+      const products = JSON.parse(localStorage.getItem('products')) || [];
+      const productList = document.getElementById('product-list');
+
+      // Duyệt qua các sản phẩm và hiển thị chúng
+      products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.className = 'bg-white shadow-lg rounded-lg p-4';
+        productElement.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-2">${product.name}</h3>
+          <p class="text-green-600 font-bold">${product.price}đ / kg</p>
+          <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Thêm vào giỏ</button>
+        `;
+        productList.appendChild(productElement);
+      });
+    };
+  </script>
+</body>
+</html>

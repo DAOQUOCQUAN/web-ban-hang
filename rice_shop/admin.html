@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Sản Phẩm - RicRice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-green-600 text-white p-4">
+    <h1 class="text-2xl font-bold text-center">Quản lý Sản Phẩm</h1>
+  </header>
+
+  <!-- Admin Login -->
+  <main class="flex justify-center items-center h-screen py-8" id="login-section">
+    <div class="max-w-screen-sm mx-auto bg-white p-6 rounded-lg shadow-lg w-full">
+      <h2 class="text-xl font-bold mb-4 text-center">Đăng nhập Admin</h2>
+      <form id="login-form">
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700">Tên đăng nhập</label>
+          <input type="text" id="username" class="w-full p-2 mt-1 border rounded" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700">Mật khẩu</label>
+          <input type="password" id="password" class="w-full p-2 mt-1 border rounded" required>
+        </div>
+
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Đăng nhập</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Form thêm sản phẩm -->
+  <main class="flex justify-center items-center h-full py-8 hidden" id="product-section">
+    <div class="max-w-screen-sm mx-auto bg-white p-6 rounded-lg shadow-lg w-full">
+      <h2 class="text-xl font-bold mb-4 text-center">Thêm Sản Phẩm</h2>
+      <form id="product-form">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700">Tên sản phẩm</label>
+          <input type="text" id="name" class="w-full p-2 mt-1 border rounded" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="price" class="block text-gray-700">Giá</label>
+          <input type="number" id="price" class="w-full p-2 mt-1 border rounded" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="image" class="block text-gray-700">Link hình ảnh</label>
+          <input type="text" id="image" class="w-full p-2 mt-1 border rounded" required>
+        </div>
+
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Thêm sản phẩm</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Admin login logic
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Simple admin credentials check
+      if (username === 'admin' && password === 'admin123') {
+        alert('Đăng nhập thành công!');
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('product-section').classList.remove('hidden');
+      } else {
+        alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+      }
+    });
+
+    // Product form logic
+    document.getElementById('product-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const price = document.getElementById('price').value;
+      const image = document.getElementById('image').value;
+
+      const newProduct = { name, price, image };
+
+      let products = JSON.parse(localStorage.getItem('products')) || [];
+      products.push(newProduct);
+
+      localStorage.setItem('products', JSON.stringify(products));
+
+      document.getElementById('product-form').reset();
+      alert('Sản phẩm đã được thêm!');
+    });
+  </script>
+
+</body>
+</html>
